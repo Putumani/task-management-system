@@ -12,7 +12,7 @@ namespace WeDesign.TaskManagement.App
 
             while (!exit)
             {
-                Console.WriteLine("Welcome to WeDesign Solutions Task Management System");
+                Console.WriteLine("Welcome to WeDesign Solutions Task Management System\n");
                 Console.WriteLine("1. Add a new task");
                 Console.WriteLine("2. Update an existing task");
                 Console.WriteLine("3. Mark a task as completed");
@@ -45,13 +45,13 @@ namespace WeDesign.TaskManagement.App
                             exit = true;
                             break;
                         default:
-                            Console.WriteLine("Invalid option. Please try again.");
+                            Console.WriteLine("Invalid option. Please try again.\n\n");
                             break;
                     }
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Error: {ex.Message}");
+                    Console.WriteLine($"Error: {ex.Message}\n\n");
                 }
             }
         }
@@ -64,7 +64,7 @@ namespace WeDesign.TaskManagement.App
 
             Task newTask = new Task(title, description, dueDate);
             taskManager.AddTask(newTask);
-            Console.WriteLine("Task added successfully!");
+            Console.WriteLine("Task added successfully!\n\n");
         }
 
         static void UpdateTask(TaskManager taskManager)
@@ -76,14 +76,14 @@ namespace WeDesign.TaskManagement.App
 
             Task updatedTask = new Task(newTitle, description, dueDate);
             taskManager.UpdateTask(title, updatedTask);
-            Console.WriteLine("Task updated successfully!");
+            Console.WriteLine("Task updated successfully!\n\n");
         }
 
         static void MarkTaskAsCompleted(TaskManager taskManager)
         {
             string title = GetNonEmptyInput("Enter the title of the task to mark as completed: ");
             taskManager.MarkTaskAsCompleted(title);
-            Console.WriteLine("Task marked as completed!");
+            Console.WriteLine("Task marked as completed!\n\n");
         }
 
         static void ViewTasksByDueDate(TaskManager taskManager)
@@ -92,7 +92,7 @@ namespace WeDesign.TaskManagement.App
             var tasks = taskManager.GetTasksByDueDate(dueDate);
             if (tasks.Count == 0)
             {
-                Console.WriteLine("No tasks found for the given date.");
+                Console.WriteLine("No tasks found for the given date.\n\n");
             }
             else
             {
@@ -112,7 +112,7 @@ namespace WeDesign.TaskManagement.App
                 input = Console.ReadLine()?.Trim() ?? string.Empty;
                 if (string.IsNullOrEmpty(input))
                 {
-                    Console.WriteLine("Input cannot be empty. Please try again.");
+                    Console.WriteLine("Input cannot be empty. Please try again.\n\n");
                 }
             } while (string.IsNullOrEmpty(input));
 
@@ -132,7 +132,7 @@ namespace WeDesign.TaskManagement.App
                 }
                 else
                 {
-                    Console.WriteLine("Invalid date format. Please enter again (yyyy-mm-dd): ");
+                    Console.WriteLine("Invalid date format. Please enter again using the following format (yyyy-mm-dd):\n\n");
                 }
             }
             return date;

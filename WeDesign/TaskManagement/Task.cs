@@ -19,7 +19,7 @@ namespace WeDesign.TaskManagement
 
         public override string ToString()
         {
-            return $"Title: {Title}, Description: {Description}, Due Date: {DueDate:yyyy-MM-dd}, Completed: {(IsCompleted ? "Yes" : "No")}";
+            return $"Title: {Title},\nDescription: {Description},\nDue Date: {DueDate:yyyy-MM-dd},\nCompleted: {(IsCompleted ? "Yes" : "No")}\n\n";
         }
     }
 }
