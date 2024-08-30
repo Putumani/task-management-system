@@ -20,7 +20,7 @@ namespace WeDesign.TaskManagement.App
                 Console.WriteLine("5. Display all tasks");
                 Console.WriteLine("6. Exit");
                 Console.Write("Please select an option: ");
-                string choice = Console.ReadLine();
+                string choice = Console.ReadLine()?.Trim() ?? string.Empty;
 
                 try
                 {
@@ -58,16 +58,10 @@ namespace WeDesign.TaskManagement.App
 
         static void AddTask(TaskManager taskManager)
         {
-            Console.Write("Enter Title: ");
-            string title = Console.ReadLine();
-            Console.Write("Enter Description: ");
-            string description = Console.ReadLine();
-            Console.Write("Enter Due Date (yyyy-mm-dd): ");
-            DateTime dueDate;
-            while (!DateTime.TryParse(Console.ReadLine(), out dueDate))
-            {
-                Console.Write("Invalid date format. Please enter again (yyyy-mm-dd): ");
-            }
+            string title = GetNonEmptyInput("Enter Title: ");
+            string description = GetNonEmptyInput("Enter Description: ");
+            DateTime dueDate = GetValidDate("Enter Due Date (yyyy-mm-dd): ");
+
             Task newTask = new Task(title, description, dueDate);
             taskManager.AddTask(newTask);
             Console.WriteLine("Task added successfully!");
@@ -75,18 +69,11 @@ namespace WeDesign.TaskManagement.App
 
         static void UpdateTask(TaskManager taskManager)
         {
-            Console.Write("Enter the title of the task to update: ");
-            string title = Console.ReadLine();
-            Console.Write("Enter new Title: ");
-            string newTitle = Console.ReadLine();
-            Console.Write("Enter new Description: ");
-            string description = Console.ReadLine();
-            Console.Write("Enter new Due Date (yyyy-mm-dd): ");
-            DateTime dueDate;
-            while (!DateTime.TryParse(Console.ReadLine(), out dueDate))
-            {
-                Console.Write("Invalid date format. Please enter again (yyyy-mm-dd): ");
-            }
+            string title = GetNonEmptyInput("Enter the title of the task to update: ");
+            string newTitle = GetNonEmptyInput("Enter new Title: ");
+            string description = GetNonEmptyInput("Enter new Description: ");
+            DateTime dueDate = GetValidDate("Enter new Due Date (yyyy-mm-dd): ");
+
             Task updatedTask = new Task(newTitle, description, dueDate);
             taskManager.UpdateTask(title, updatedTask);
             Console.WriteLine("Task updated successfully!");
@@ -94,20 +81,14 @@ namespace WeDesign.TaskManagement.App
 
         static void MarkTaskAsCompleted(TaskManager taskManager)
         {
-            Console.Write("Enter the title of the task to mark as completed: ");
-            string title = Console.ReadLine();
+            string title = GetNonEmptyInput("Enter the title of the task to mark as completed: ");
             taskManager.MarkTaskAsCompleted(title);
             Console.WriteLine("Task marked as completed!");
         }
 
         static void ViewTasksByDueDate(TaskManager taskManager)
         {
-            Console.Write("Enter Due Date (yyyy-mm-dd): ");
-            DateTime dueDate;
-            while (!DateTime.TryParse(Console.ReadLine(), out dueDate))
-            {
-                Console.Write("Invalid date format. Please enter again (yyyy-mm-dd): ");
-            }
+            DateTime dueDate = GetValidDate("Enter Due Date (yyyy-mm-dd): ");
             var tasks = taskManager.GetTasksByDueDate(dueDate);
             if (tasks.Count == 0)
             {
@@ -120,6 +101,41 @@ namespace WeDesign.TaskManagement.App
                     Console.WriteLine(task.ToString());
                 }
             }
+        }
+
+        static string GetNonEmptyInput(string prompt)
+        {
+            string input;
+            do
+            {
+                Console.Write(prompt);
+                input = Console.ReadLine()?.Trim() ?? string.Empty;
+                if (string.IsNullOrEmpty(input))
+                {
+                    Console.WriteLine("Input cannot be empty. Please try again.");
+                }
+            } while (string.IsNullOrEmpty(input));
+
+            return input;
+        }
+
+        static DateTime GetValidDate(string prompt)
+        {
+            DateTime date;
+            while (true)
+            {
+                Console.Write(prompt);
+                string input = Console.ReadLine()?.Trim() ?? string.Empty;
+                if (DateTime.TryParse(input, out date))
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid date format. Please enter again (yyyy-mm-dd): ");
+                }
+            }
+            return date;
         }
     }
 }
