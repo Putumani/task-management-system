@@ -1,0 +1,15 @@
+/home/puradadev/Desktop/company-assessments/wedesign-solutions/task-management-system/WeDesign/TaskManagement/obj/Debug/net8.0/TaskManagement.GeneratedMSBuildEditorConfig.editorconfig
+/home/puradadev/Desktop/company-assessments/wedesign-solutions/task-management-system/WeDesign/TaskManagement/obj/Debug/net8.0/TaskManagement.AssemblyInfoInputs.cache
+/home/puradadev/Desktop/company-assessments/wedesign-solutions/task-management-system/WeDesign/TaskManagement/obj/Debug/net8.0/TaskManagement.AssemblyInfo.cs
+/home/puradadev/Desktop/company-assessments/wedesign-solutions/task-management-system/WeDesign/TaskManagement/obj/Debug/net8.0/TaskManagement.csproj.CoreCompileInputs.cache
+/home/puradadev/Desktop/company-assessments/wedesign-solutions/task-management-system/WeDesign/TaskManagement/obj/Debug/net8.0/TaskManagement.sourcelink.json
+/home/puradadev/Desktop/company-assessments/wedesign-solutions/task-management-system/WeDesign/TaskManagement/bin/Debug/net8.0/TaskManagement
+/home/puradadev/Desktop/company-assessments/wedesign-solutions/task-management-system/WeDesign/TaskManagement/bin/Debug/net8.0/TaskManagement.deps.json
+/home/puradadev/Desktop/company-assessments/wedesign-solutions/task-management-system/WeDesign/TaskManagement/bin/Debug/net8.0/TaskManagement.runtimeconfig.json
+/home/puradadev/Desktop/company-assessments/wedesign-solutions/task-management-system/WeDesign/TaskManagement/bin/Debug/net8.0/TaskManagement.dll
+/home/puradadev/Desktop/company-assessments/wedesign-solutions/task-management-system/WeDesign/TaskManagement/bin/Debug/net8.0/TaskManagement.pdb
+/home/puradadev/Desktop/company-assessments/wedesign-solutions/task-management-system/WeDesign/TaskManagement/obj/Debug/net8.0/TaskManagement.dll
+/home/puradadev/Desktop/company-assessments/wedesign-solutions/task-management-system/WeDesign/TaskManagement/obj/Debug/net8.0/refint/TaskManagement.dll
+/home/puradadev/Desktop/company-assessments/wedesign-solutions/task-management-system/WeDesign/TaskManagement/obj/Debug/net8.0/TaskManagement.pdb
+/home/puradadev/Desktop/company-assessments/wedesign-solutions/task-management-system/WeDesign/TaskManagement/obj/Debug/net8.0/TaskManagement.genruntimeconfig.cache
+/home/puradadev/Desktop/company-assessments/wedesign-solutions/task-management-system/WeDesign/TaskManagement/obj/Debug/net8.0/ref/TaskManagement.dll

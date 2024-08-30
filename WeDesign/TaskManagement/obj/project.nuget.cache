@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "+1Pud08gQ5mFfTGOPBLEur0UHkpHbbtyqn5S4lcAzlcjBWwKp8PGMuK4mbiAjOTvI2VocVWGUF6vQrDEosxoiQ==",
+  "success": true,
+  "projectFilePath": "/home/puradadev/Desktop/company-assessments/wedesign-solutions/task-management-system/WeDesign/TaskManagement/TaskManagement.csproj",
+  "expectedPackageFiles": [
+    "/home/puradadev/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.7/microsoft.aspnetcore.app.ref.8.0.7.nupkg.sha512"
+  ],
+  "logs": []
+}
