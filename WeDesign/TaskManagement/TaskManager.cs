@@ -22,7 +22,7 @@ namespace WeDesign.TaskManagement
             var task = tasks.FirstOrDefault(t => t.Title.Equals(title, StringComparison.OrdinalIgnoreCase));
             if (task == null)
             {
-                throw new KeyNotFoundException("Task not found.");
+                throw new KeyNotFoundException("Task not found.\n\n");
             }
             task.Title = updatedTask.Title;
             task.Description = updatedTask.Description;
@@ -34,7 +34,7 @@ namespace WeDesign.TaskManagement
             var task = tasks.FirstOrDefault(t => t.Title.Equals(title, StringComparison.OrdinalIgnoreCase));
             if (task == null)
             {
-                throw new KeyNotFoundException("Task not found.");
+                throw new KeyNotFoundException("Task not found.\n\n");
             }
             task.IsCompleted = true;
         }
@@ -48,11 +48,11 @@ namespace WeDesign.TaskManagement
         {
             if (tasks.Count == 0)
             {
-                Console.WriteLine("No tasks available.");
+                Console.WriteLine("No tasks available.\n\n");
             }
             else
             {
-                Console.WriteLine("Task List:");
+                Console.WriteLine("\nTask List:");
                 foreach (var task in tasks)
                 {
                     Console.WriteLine(task.ToString());
