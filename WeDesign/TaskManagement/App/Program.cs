@@ -12,7 +12,7 @@ namespace WeDesign.TaskManagement.App
 
             while (!exit)
             {
-                Console.WriteLine("Welcome to WeDesign Solutions Task Management System\n");
+                Console.WriteLine("Welcome to WeDesign Solutions Task Management System");
                 Console.WriteLine("1. Add a new task");
                 Console.WriteLine("2. Update an existing task");
                 Console.WriteLine("3. Mark a task as completed");
@@ -58,7 +58,7 @@ namespace WeDesign.TaskManagement.App
 
         static void AddTask(TaskManager taskManager)
         {
-            string title = GetNonEmptyInput("Enter Title: ");
+            string title = GetNonEmptyInput("\nEnter Title: ");
             string description = GetNonEmptyInput("Enter Description: ");
             DateTime dueDate = GetValidDate("Enter Due Date (yyyy-mm-dd): ");
 
@@ -69,7 +69,7 @@ namespace WeDesign.TaskManagement.App
 
         static void UpdateTask(TaskManager taskManager)
         {
-            string title = GetNonEmptyInput("Enter the title of the task to update: ");
+            string title = GetNonEmptyInput("\nEnter the title of the task to update: ");
             string newTitle = GetNonEmptyInput("Enter new Title: ");
             string description = GetNonEmptyInput("Enter new Description: ");
             DateTime dueDate = GetValidDate("Enter new Due Date (yyyy-mm-dd): ");
@@ -81,14 +81,14 @@ namespace WeDesign.TaskManagement.App
 
         static void MarkTaskAsCompleted(TaskManager taskManager)
         {
-            string title = GetNonEmptyInput("Enter the title of the task to mark as completed: ");
+            string title = GetNonEmptyInput("\nEnter the title of the task to mark as completed: ");
             taskManager.MarkTaskAsCompleted(title);
             Console.WriteLine("Task marked as completed!\n\n");
         }
 
         static void ViewTasksByDueDate(TaskManager taskManager)
         {
-            DateTime dueDate = GetValidDate("Enter Due Date (yyyy-mm-dd): ");
+            DateTime dueDate = GetValidDate("\nEnter Due Date (yyyy-mm-dd): ");
             var tasks = taskManager.GetTasksByDueDate(dueDate);
             if (tasks.Count == 0)
             {
@@ -126,17 +126,24 @@ namespace WeDesign.TaskManagement.App
             {
                 Console.Write(prompt);
                 string input = Console.ReadLine()?.Trim() ?? string.Empty;
-                if (DateTime.TryParse(input, out date))
+
+                if (DateTime.TryParseExact(input, "yyyy-MM-dd", null, System.Globalization.DateTimeStyles.None, out date))
                 {
-                    break;
+                    if (date >= DateTime.Today)
+                    {
+                        break; 
+                    }
+                    else
+                    {
+                        Console.WriteLine("The due date cannot be in the past. Please enter a date that is today or in the future.\n");
+                    }
                 }
                 else
                 {
-                    Console.WriteLine("Invalid date format. Please enter again using the following format (yyyy-mm-dd):\n\n");
+                    Console.WriteLine("Invalid date format. Please enter the date in the format (yyyy-mm-dd).\n");
                 }
             }
             return date;
         }
     }
 }
-

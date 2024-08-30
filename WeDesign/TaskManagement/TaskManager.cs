@@ -12,7 +12,7 @@ namespace WeDesign.TaskManagement
         {
             if (tasks.Any(t => t.Title.Equals(task.Title, StringComparison.OrdinalIgnoreCase)))
             {
-                throw new ArgumentException("A task with the same title already exists.");
+                throw new ArgumentException("\nA task with the same title already exists.\n\n");
             }
             tasks.Add(task);
         }
