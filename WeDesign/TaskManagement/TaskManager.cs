@@ -12,7 +12,7 @@ namespace WeDesign.TaskManagement
         {
             if (tasks.Any(t => t.Title.Equals(task.Title, StringComparison.OrdinalIgnoreCase)))
             {
-                throw new ArgumentException("\nA task with the same title already exists.\n\n");
+                throw new ArgumentException("A task with the same title already exists.\n\n");
             }
             tasks.Add(task);
         }
@@ -22,7 +22,7 @@ namespace WeDesign.TaskManagement
             var task = tasks.FirstOrDefault(t => t.Title.Equals(title, StringComparison.OrdinalIgnoreCase));
             if (task == null)
             {
-                throw new KeyNotFoundException("Task not found.\n\n");
+                throw new KeyNotFoundException($"The task titled \"{title}\" is not found.");
             }
             task.Title = updatedTask.Title;
             task.Description = updatedTask.Description;
@@ -34,7 +34,7 @@ namespace WeDesign.TaskManagement
             var task = tasks.FirstOrDefault(t => t.Title.Equals(title, StringComparison.OrdinalIgnoreCase));
             if (task == null)
             {
-                throw new KeyNotFoundException("Task not found.\n\n");
+                throw new KeyNotFoundException($"The task titled \"{title}\" is not found.");
             }
             task.IsCompleted = true;
         }
