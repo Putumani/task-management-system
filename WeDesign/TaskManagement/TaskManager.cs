@@ -10,7 +10,7 @@ namespace WeDesign.TaskManagement
 
         public void AddTask(Task task)
         {
-            if (tasks.Any(t => t.Title.Equals(task.Title, StringComparison.OrdinalIgnoreCase)))
+            if (TaskExists(task.Title))
             {
                 throw new ArgumentException("A task with the same title already exists.\n\n");
             }
@@ -19,11 +19,7 @@ namespace WeDesign.TaskManagement
 
         public void UpdateTask(string title, Task updatedTask)
         {
-            var task = tasks.FirstOrDefault(t => t.Title.Equals(title, StringComparison.OrdinalIgnoreCase));
-            if (task == null)
-            {
-                throw new KeyNotFoundException($"The task titled \"{title}\" is not found.");
-            }
+            var task = FindTaskByTitle(title);
             task.Title = updatedTask.Title;
             task.Description = updatedTask.Description;
             task.DueDate = updatedTask.DueDate;
@@ -31,11 +27,7 @@ namespace WeDesign.TaskManagement
 
         public void MarkTaskAsCompleted(string title)
         {
-            var task = tasks.FirstOrDefault(t => t.Title.Equals(title, StringComparison.OrdinalIgnoreCase));
-            if (task == null)
-            {
-                throw new KeyNotFoundException($"The task titled \"{title}\" is not found.");
-            }
+            var task = FindTaskByTitle(title);
             task.IsCompleted = true;
         }
 
@@ -58,6 +50,21 @@ namespace WeDesign.TaskManagement
                     Console.WriteLine(task.ToString());
                 }
             }
+        }
+
+        private Task FindTaskByTitle(string title)
+        {
+            var task = tasks.FirstOrDefault(t => t.Title.Equals(title, StringComparison.OrdinalIgnoreCase));
+            if (task == null)
+            {
+                throw new KeyNotFoundException($"The task titled \"{title}\" is not found.");
+            }
+            return task;
+        }
+
+        private bool TaskExists(string title)
+        {
+            return tasks.Any(t => t.Title.Equals(title, StringComparison.OrdinalIgnoreCase));
         }
     }
 }

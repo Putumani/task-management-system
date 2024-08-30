@@ -14,11 +14,7 @@ namespace WeDesign.TaskManagement.App
 
         public void AddTask()
         {
-            string title = GetNonEmptyInput("\nEnter Title: ");
-            string description = GetNonEmptyInput("Enter Description: ");
-            DateTime dueDate = GetValidDate("Enter Due Date (yyyy-mm-dd): ");
-
-            Task newTask = new Task(title, description, dueDate);
+            Task newTask = CreateTaskFromUserInput();
             _taskManager.AddTask(newTask);
             Console.WriteLine("Task added successfully!\n\n");
         }
@@ -26,11 +22,7 @@ namespace WeDesign.TaskManagement.App
         public void UpdateTask()
         {
             string title = GetNonEmptyInput("\nEnter the title of the task to update: ");
-            string newTitle = GetNonEmptyInput("Enter new Title: ");
-            string description = GetNonEmptyInput("Enter new Description: ");
-            DateTime dueDate = GetValidDate("Enter new Due Date (yyyy-mm-dd): ");
-
-            Task updatedTask = new Task(newTitle, description, dueDate);
+            Task updatedTask = CreateTaskFromUserInput();
             _taskManager.UpdateTask(title, updatedTask);
             Console.WriteLine("Task updated successfully!\n\n");
         }
@@ -59,6 +51,15 @@ namespace WeDesign.TaskManagement.App
                     Console.WriteLine(task.ToString());
                 }
             }
+        }
+
+        private Task CreateTaskFromUserInput()
+        {
+            string title = GetNonEmptyInput("\nEnter Title: ");
+            string description = GetNonEmptyInput("Enter Description: ");
+            DateTime dueDate = GetValidDate("Enter Due Date (yyyy-mm-dd): ");
+
+            return new Task(title, description, dueDate);
         }
 
         private string GetNonEmptyInput(string prompt)
